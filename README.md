@@ -1,4 +1,4 @@
-#🎮 School Games Hub
+# 🎮 School Games Hub
 Unblocked games for school – optimized for computers!
 
 This repository hosts a collection of unblocked games designed specifically for desktop and laptop users. With a sleek, Poki-inspired design, this site is perfect for students looking to enjoy games during their free time on school computers.
