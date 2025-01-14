@@ -11,39 +11,32 @@
             background-color: #f4f4f9;
             color: #333;
         }
-        .game-list {
+        h1 {
+            margin: 20px 0;
+        }
+        .game-container {
             margin: 20px auto;
-            max-width: 800px;
+            max-width: 1280px;
         }
-        .game-item {
-            margin: 15px 0;
-        }
-        a {
-            text-decoration: none;
-            color: #007BFF;
-        }
-        a:hover {
-            text-decoration: underline;
+        iframe {
+            width: 100%;
+            max-width: 1280px;
+            height: 720px;
+            border: none;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <h1>School Games</h1>
-    <p>Play fun games during your free time at school!</p>
-    <div class="game-list">
-        <!-- Add your games here -->
-        <div class="game-item">
-            <a href="game1.html" target="_blank">Game 1</a>
-        </div>
-        <div class="game-item">
-            <a href="game2.html" target="_blank">Game 2</a>
-        </div>
-        <div class="game-item">
-            <a href="https://poki.com/" target="_blank">More Games on Poki</a>
-        </div>
-        <div class="game-item">
-            <a href="https://1game.io/" target="_blank">More Games on 1game.io</a>
-        </div>
+    <p>Play fun games directly from this page!</p>
+
+    <div class="game-container">
+        <iframe src="https://1games.io/game/astro-robot-clicker/" scrolling="none"></iframe>
+        <iframe src="https://1games.io/game/tap-road/" scrolling="none"></iframe>
+        <iframe src="https://1games.io/game/geometry-lite-classic/" scrolling="none"></iframe>
+        <iframe src="https://1games.io/game/escape-road/" scrolling="none"></iframe>
     </div>
 </body>
 </html>
+
