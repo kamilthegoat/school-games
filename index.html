@@ -12,7 +12,8 @@
             flex-direction: column;
             background: linear-gradient(to bottom, purple, black);
             color: white;
-            overflow: hidden;
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Prevent body scroll */
         }
 
         h1 {
@@ -30,15 +31,12 @@
             width: 20%;
             background-color: rgba(0, 0, 0, 0.8);
             padding: 10px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            overflow-y: auto; /* Enable vertical scrolling */
         }
 
         .main-content {
             flex: 1;
-            overflow-y: auto;
+            overflow-y: auto; /* Enable vertical scrolling */
             padding: 20px;
             text-align: center;
         }
