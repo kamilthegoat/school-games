@@ -119,27 +119,6 @@
         .game-card button:hover {
             background-color: var(--button-hover);
         }
-
-        .settings {
-            display: none;
-            margin: 20px;
-            text-align: center;
-        }
-
-        .settings label {
-            margin-right: 10px;
-        }
-
-        .meme-container {
-            margin: 20px;
-            text-align: center;
-        }
-
-        .meme-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
     </style>
 </head>
 <body data-theme="light">
@@ -151,60 +130,28 @@
         </div>
     </header>
 
-    <div class="settings" id="settingsMenu">
-        <label for="themeSelect">Theme:</label>
-        <select id="themeSelect" onchange="changeTheme(this.value)">
-            <option value="system">System</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-        </select>
-    </div>
-
-    <div class="meme-container">
-        <h2>Meme of the Day</h2>
-        <img id="memeImage" src="" alt="Meme of the Day">
-    </div>
-
     <div class="container" id="gameContainer">
-        <div class="game-card" data-title="Astro Robot Clicker">
-            <img src="https://via.placeholder.com/150x100.png?text=Astro+Robot+Clicker" alt="Astro Robot Clicker">
-            <h3>Astro Robot Clicker</h3>
-            <div class="views" id="astroViews">Views: 0</div>
-            <button onclick="playGame('https://1games.io/game/astro-robot-clicker/', 'astroViews')">Play Now</button>
+        <div class="game-card" data-title="Highway Traffic">
+            <img src="https://via.placeholder.com/150x100.png?text=Highway+Traffic" alt="Highway Traffic">
+            <h3>Highway Traffic</h3>
+            <div class="views" id="highwayTrafficViews">Views: 0</div>
+            <button onclick="playGame('https://www.onlinegames.io/games/2022/unity/highway-traffic/index.html', 'highwayTrafficViews')">Play Now</button>
         </div>
-        <div class="game-card" data-title="Tap Road">
-            <img src="https://via.placeholder.com/150x100.png?text=Tap+Road" alt="Tap Road">
-            <h3>Tap Road</h3>
-            <div class="views" id="tapRoadViews">Views: 0</div>
-            <button onclick="playGame('https://1games.io/game/tap-road/', 'tapRoadViews')">Play Now</button>
+        <div class="game-card" data-title="GTA Simulator">
+            <img src="https://via.placeholder.com/150x100.png?text=GTA+Simulator" alt="GTA Simulator">
+            <h3>GTA Simulator</h3>
+            <div class="views" id="gtaSimulatorViews">Views: 0</div>
+            <button onclick="playGame('https://www.onlinegames.io/games/2023/unity2/gta-simulator/index.html', 'gtaSimulatorViews')">Play Now</button>
         </div>
-        <div class="game-card" data-title="Vex 4">
-            <img src="https://via.placeholder.com/150x100.png?text=Vex+4" alt="Vex 4">
-            <h3>Vex 4</h3>
-            <div class="views" id="vex4Views">Views: 0</div>
-            <button onclick="playGame('https://www.rapidwebapp.com/game/vex4/index.html', 'vex4Views')">Play Now</button>
-        </div>
-        <div class="game-card" data-title="Mario">
-            <img src="https://via.placeholder.com/150x100.png?text=Mario" alt="Mario">
-            <h3>Mario</h3>
-            <div class="views" id="marioViews">Views: 0</div>
-            <button onclick="playGame('https://augustberchelmann.com/mario/', 'marioViews')">Play Now</button>
-        </div>
-        <div class="game-card" data-title="Pokemon Red">
-            <img src="https://via.placeholder.com/150x100.png?text=Pokemon+Red" alt="Pokemon Red">
-            <h3>Pokemon Red</h3>
-            <div class="views" id="pokemonRedViews">Views: 0</div>
-            <button onclick="playGame('https://pokemonredgb.netlify.app/', 'pokemonRedViews')">Play Now</button>
+        <div class="game-card" data-title="Masked Special Forces">
+            <img src="https://via.placeholder.com/150x100.png?text=Masked+Special+Forces" alt="Masked Special Forces">
+            <h3>Masked Special Forces</h3>
+            <div class="views" id="maskedSpecialForcesViews">Views: 0</div>
+            <button onclick="playGame('https://www.onlinegames.io/games/2022/unity2/masked-special-forces/index.html', 'maskedSpecialForcesViews')">Play Now</button>
         </div>
     </div>
 
     <script>
-        const memes = [
-            "https://i.imgflip.com/4/30b1gx.jpg",
-            "https://i.imgflip.com/1bij.jpg",
-            "https://i.imgflip.com/26am.jpg"
-        ];
-
         function playGame(gameUrl, viewId) {
             window.open(gameUrl, '_blank');
             const viewElement = document.getElementById(viewId);
@@ -221,33 +168,7 @@
                 game.style.display = title.includes(searchValue) ? 'block' : 'none';
             });
         }
-
-        function toggleSettings() {
-            const settingsMenu = document.getElementById('settingsMenu');
-            settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function changeTheme(theme) {
-            if (theme === 'system') {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                document.body.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-            } else {
-                document.body.setAttribute('data-theme', theme);
-            }
-        }
-
-        function loadMeme() {
-            const memeImage = document.getElementById('memeImage');
-            const randomMeme = memes[Math.floor(Math.random() * memes.length)];
-            memeImage.src = randomMeme;
-        }
-
-        // Load system theme on startup
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.body.setAttribute('data-theme', systemPrefersDark ? 'dark' : 'light');
-
-        // Load meme of the day
-        loadMeme();
     </script>
 </body>
 </html>
+
