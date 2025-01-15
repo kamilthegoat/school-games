@@ -8,17 +8,21 @@
         :root {
             --bg-color: #f4f4f9;
             --text-color: #333;
-            --card-bg-color: white;
-            --primary-color: #6200ea;
-            --primary-hover: #3700b3;
+            --card-bg: white;
+            --header-bg: #6200ea;
+            --header-text: white;
+            --button-bg: #6200ea;
+            --button-hover: #3700b3;
         }
 
         [data-theme="dark"] {
             --bg-color: #121212;
-            --text-color: #ffffff;
-            --card-bg-color: #1e1e1e;
-            --primary-color: #bb86fc;
-            --primary-hover: #7b51f1;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --header-bg: #3700b3;
+            --header-text: white;
+            --button-bg: #bb86fc;
+            --button-hover: #6200ea;
         }
 
         body {
@@ -27,11 +31,12 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--header-bg);
+            color: var(--header-text);
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
@@ -43,12 +48,24 @@
             font-size: 1.5em;
         }
 
+        header .header-right {
+            display: flex;
+            align-items: center;
+        }
+
         header input {
             padding: 5px;
             font-size: 1em;
             border: none;
             border-radius: 5px;
             width: 200px;
+            margin-right: 10px;
+        }
+
+        header .settings-icon {
+            cursor: pointer;
+            font-size: 1.5em;
+            color: var(--header-text);
         }
 
         .container {
@@ -59,7 +76,7 @@
         }
 
         .game-card {
-            background-color: var(--card-bg-color);
+            background-color: var(--card-bg);
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -91,7 +108,7 @@
 
         .game-card button {
             padding: 10px 15px;
-            background-color: var(--primary-color);
+            background-color: var(--button-bg);
             color: white;
             border: none;
             border-radius: 5px;
@@ -100,10 +117,11 @@
         }
 
         .game-card button:hover {
-            background-color: var(--primary-hover);
+            background-color: var(--button-hover);
         }
 
         .settings {
+            display: none;
             margin: 20px;
             text-align: center;
         }
@@ -113,25 +131,29 @@
         }
 
         .meme-container {
-            text-align: center;
             margin: 20px;
+            text-align: center;
         }
 
         .meme-container img {
             max-width: 100%;
+            height: auto;
             border-radius: 10px;
         }
     </style>
 </head>
-<body>
+<body data-theme="light">
     <header>
         <h1>School Games</h1>
-        <input type="text" id="searchBar" placeholder="Search games..." oninput="filterGames()">
+        <div class="header-right">
+            <input type="text" id="searchBar" placeholder="Search games..." oninput="filterGames()">
+            <span class="settings-icon" onclick="toggleSettings()">⚙️</span>
+        </div>
     </header>
 
-    <div class="settings">
+    <div class="settings" id="settingsMenu">
         <label for="themeSelect">Theme:</label>
-        <select id="themeSelect" onchange="changeTheme()">
+        <select id="themeSelect" onchange="changeTheme(this.value)">
             <option value="system">System</option>
             <option value="light">Light</option>
             <option value="dark">Dark</option>
@@ -150,21 +172,39 @@
             <div class="views" id="astroViews">Views: 0</div>
             <button onclick="playGame('https://1games.io/game/astro-robot-clicker/', 'astroViews')">Play Now</button>
         </div>
-        <div class="game-card" data-title="Custom Game 1">
-            <img src="https://via.placeholder.com/150x100.png?text=Custom+Game+1" alt="Custom Game 1">
-            <h3>Custom Game 1</h3>
-            <div class="views" id="customGame1Views">Views: 0</div>
-            <button onclick="playGame('https://example.com/custom-game-1', 'customGame1Views')">Play Now</button>
+        <div class="game-card" data-title="Tap Road">
+            <img src="https://via.placeholder.com/150x100.png?text=Tap+Road" alt="Tap Road">
+            <h3>Tap Road</h3>
+            <div class="views" id="tapRoadViews">Views: 0</div>
+            <button onclick="playGame('https://1games.io/game/tap-road/', 'tapRoadViews')">Play Now</button>
         </div>
-        <div class="game-card" data-title="Custom Game 2">
-            <img src="https://via.placeholder.com/150x100.png?text=Custom+Game+2" alt="Custom Game 2">
-            <h3>Custom Game 2</h3>
-            <div class="views" id="customGame2Views">Views: 0</div>
-            <button onclick="playGame('https://example.com/custom-game-2', 'customGame2Views')">Play Now</button>
+        <div class="game-card" data-title="Vex 4">
+            <img src="https://via.placeholder.com/150x100.png?text=Vex+4" alt="Vex 4">
+            <h3>Vex 4</h3>
+            <div class="views" id="vex4Views">Views: 0</div>
+            <button onclick="playGame('https://www.rapidwebapp.com/game/vex4/index.html', 'vex4Views')">Play Now</button>
+        </div>
+        <div class="game-card" data-title="Mario">
+            <img src="https://via.placeholder.com/150x100.png?text=Mario" alt="Mario">
+            <h3>Mario</h3>
+            <div class="views" id="marioViews">Views: 0</div>
+            <button onclick="playGame('https://augustberchelmann.com/mario/', 'marioViews')">Play Now</button>
+        </div>
+        <div class="game-card" data-title="Pokemon Red">
+            <img src="https://via.placeholder.com/150x100.png?text=Pokemon+Red" alt="Pokemon Red">
+            <h3>Pokemon Red</h3>
+            <div class="views" id="pokemonRedViews">Views: 0</div>
+            <button onclick="playGame('https://pokemonredgb.netlify.app/', 'pokemonRedViews')">Play Now</button>
         </div>
     </div>
 
     <script>
+        const memes = [
+            "https://i.imgflip.com/4/30b1gx.jpg",
+            "https://i.imgflip.com/1bij.jpg",
+            "https://i.imgflip.com/26am.jpg"
+        ];
+
         function playGame(gameUrl, viewId) {
             window.open(gameUrl, '_blank');
             const viewElement = document.getElementById(viewId);
@@ -182,34 +222,32 @@
             });
         }
 
-        function changeTheme() {
-            const theme = document.getElementById('themeSelect').value;
+        function toggleSettings() {
+            const settingsMenu = document.getElementById('settingsMenu');
+            settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function changeTheme(theme) {
             if (theme === 'system') {
-                setSystemTheme();
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.body.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
             } else {
-                document.documentElement.setAttribute('data-theme', theme);
+                document.body.setAttribute('data-theme', theme);
             }
         }
 
-        function setSystemTheme() {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-        }
-
         function loadMeme() {
-            const memes = [
-                "https://i.imgflip.com/3vzej.jpg",
-                "https://i.imgflip.com/4t0m5.jpg",
-                "https://i.imgflip.com/1bij.jpg"
-            ];
+            const memeImage = document.getElementById('memeImage');
             const randomMeme = memes[Math.floor(Math.random() * memes.length)];
-            document.getElementById('memeImage').src = randomMeme;
+            memeImage.src = randomMeme;
         }
 
-        window.onload = function () {
-            setSystemTheme();
-            loadMeme();
-        };
+        // Load system theme on startup
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.body.setAttribute('data-theme', systemPrefersDark ? 'dark' : 'light');
+
+        // Load meme of the day
+        loadMeme();
     </script>
 </body>
 </html>
