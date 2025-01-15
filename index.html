@@ -3,35 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Games Hub</title>
+    <title>School Games</title>
     <style>
-        :root {
-            --primary-color: #6200ea;
-            --secondary-color: #3700b3;
-            --text-color: #ffffff;
-            --bg-color: #1e1e2f;
-        }
-
-        @media (prefers-color-scheme: light) {
-            :root {
-                --primary-color: #d1c4e9;
-                --secondary-color: #9575cd;
-                --text-color: #000000;
-                --bg-color: #f4f4f9;
-            }
-        }
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: #f4f4f9;
+            color: #333;
         }
 
         header {
-            background-color: var(--primary-color);
-            color: var(--text-color);
+            background-color: #6200ea;
+            color: white;
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
@@ -43,12 +27,6 @@
             font-size: 1.5em;
         }
 
-        header .controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
         header input {
             padding: 5px;
             font-size: 1em;
@@ -57,45 +35,19 @@
             width: 200px;
         }
 
-        header .categories {
-            display: flex;
-            gap: 10px;
-        }
-
-        header .categories a {
-            text-decoration: none;
-            color: var(--text-color);
-            background-color: var(--secondary-color);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9em;
-        }
-
-        header .categories a:hover {
-            background-color: var(--primary-color);
-        }
-
         .container {
             padding: 20px;
-        }
-
-        .category-title {
-            font-size: 1.5em;
-            margin: 20px 0 10px;
-        }
-
-        .game-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
         .game-card {
-            background-color: var(--primary-color);
+            background-color: white;
             border-radius: 10px;
-            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            padding: 15px;
             transition: transform 0.2s;
         }
 
@@ -117,14 +69,14 @@
 
         .game-card .views {
             font-size: 0.9em;
-            margin: 5px 0;
-            color: #ffeb3b;
+            color: #888;
+            margin-bottom: 10px;
         }
 
         .game-card button {
             padding: 10px 15px;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
+            background-color: #6200ea;
+            color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -132,72 +84,52 @@
         }
 
         .game-card button:hover {
-            background-color: var(--primary-color);
-        }
-
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            margin-top: 20px;
-        }
-
-        .meme-generator {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .meme-generator img {
-            max-width: 300px;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            background-color: #3700b3;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>School Games Hub</h1>
-        <div class="controls">
-            <input type="text" id="searchBar" placeholder="Search games..." oninput="filterGames()">
-            <div class="categories">
-                <a href="#new">New Games</a>
-                <a href="#popular">Popular Games</a>
-                <a href="#unblocked">Unblocked</a>
-            </div>
-        </div>
+        <h1>School Games</h1>
+        <input type="text" id="searchBar" placeholder="Search games..." oninput="filterGames()">
     </header>
 
-    <div class="container">
-        <!-- New Games Section -->
-        <h2 id="new" class="category-title">New Games</h2>
-        <div class="game-list" id="gameContainer">
-            <!-- Example Game -->
-            <div class="game-card" data-title="Astro Robot Clicker">
-                <img src="https://via.placeholder.com/150x100.png?text=Astro+Robot+Clicker" alt="Astro Robot Clicker">
-                <h3>Astro Robot Clicker</h3>
-                <div class="views" id="astroViews">Views: 0</div>
-                <button onclick="playGame('https://1games.io/game/astro-robot-clicker/', 'astroViews')">Play Now</button>
-            </div>
-            <!-- Add more games here -->
+    <div class="container" id="gameContainer">
+        <div class="game-card" data-title="Astro Robot Clicker">
+            <img src="https://via.placeholder.com/150x100.png?text=Astro+Robot+Clicker" alt="Astro Robot Clicker">
+            <h3>Astro Robot Clicker</h3>
+            <div class="views" id="astroViews">Views: 0</div>
+            <button onclick="playGame('https://1games.io/game/astro-robot-clicker/', 'astroViews')">Play Now</button>
         </div>
-
-        <!-- Meme Generator -->
-        <div class="meme-generator">
-            <h2>Random Meme Generator</h2>
-            <img id="memeImage" src="https://via.placeholder.com/300x200.png?text=Meme" alt="Random Meme">
-            <br>
-            <button onclick="generateMeme()">Generate Meme</button>
+        <div class="game-card" data-title="Tap Road">
+            <img src="https://via.placeholder.com/150x100.png?text=Tap+Road" alt="Tap Road">
+            <h3>Tap Road</h3>
+            <div class="views" id="tapRoadViews">Views: 0</div>
+            <button onclick="playGame('https://1games.io/game/tap-road/', 'tapRoadViews')">Play Now</button>
+        </div>
+        <div class="game-card" data-title="Vex 4">
+            <img src="https://via.placeholder.com/150x100.png?text=Vex+4" alt="Vex 4">
+            <h3>Vex 4</h3>
+            <div class="views" id="vex4Views">Views: 0</div>
+            <button onclick="playGame('https://www.rapidwebapp.com/game/vex4/index.html', 'vex4Views')">Play Now</button>
+        </div>
+        <div class="game-card" data-title="Mario">
+            <img src="https://via.placeholder.com/150x100.png?text=Mario" alt="Mario">
+            <h3>Mario</h3>
+            <div class="views" id="marioViews">Views: 0</div>
+            <button onclick="playGame('https://augustberchelmann.com/mario/', 'marioViews')">Play Now</button>
+        </div>
+        <div class="game-card" data-title="Pokemon Red">
+            <img src="https://via.placeholder.com/150x100.png?text=Pokemon+Red" alt="Pokemon Red">
+            <h3>Pokemon Red</h3>
+            <div class="views" id="pokemonRedViews">Views: 0</div>
+            <button onclick="playGame('https://pokemonredgb.netlify.app/', 'pokemonRedViews')">Play Now</button>
         </div>
     </div>
 
-    <iframe id="gameFrame" src="" style="display: none;"></iframe>
-
     <script>
         function playGame(gameUrl, viewId) {
-            const iframe = document.getElementById('gameFrame');
-            iframe.src = gameUrl;
-            iframe.style.display = 'block';
-
+            window.open(gameUrl, '_blank');
             // Increment view count
             const viewElement = document.getElementById(viewId);
             let currentViews = parseInt(viewElement.innerText.replace('Views: ', ''));
@@ -212,12 +144,6 @@
                 const title = game.getAttribute('data-title').toLowerCase();
                 game.style.display = title.includes(searchValue) ? 'block' : 'none';
             });
-        }
-
-        async function generateMeme() {
-            const response = await fetch('https://meme-api.com/memes/random');
-            const meme = await response.json();
-            document.getElementById('memeImage').src = meme.url;
         }
     </script>
 </body>
