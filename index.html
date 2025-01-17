@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Games</title>
+    <title>Kamil's Game Cave</title>
     <style>
         :root {
             --bg-color: #f4f4f9;
@@ -68,13 +68,6 @@
             color: var(--header-text);
         }
 
-        .container {
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
         .popular-section {
             margin: 20px;
         }
@@ -82,6 +75,13 @@
         .popular-section h2 {
             font-size: 1.5em;
             margin-bottom: 10px;
+        }
+
+        .container {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
         .game-card {
@@ -131,14 +131,6 @@
     </style>
 </head>
 <body data-theme="light">
-    <header>
-        <h1>School Games</h1>
-        <div class="header-right">
-            <input type="text" id="searchBar" placeholder="Search games..." oninput="filterGames()">
-            <span class="settings-icon" onclick="toggleSettings()">⚙️</span>
-        </div>
-    </header>
-
     <!-- Popular Games Section -->
     <div class="popular-section">
         <h2>Popular Games</h2>
@@ -164,20 +156,37 @@
         </div>
     </div>
 
+    <header>
+        <h1>Kamil's Game Cave</h1>
+        <div class="header-right">
+            <input type="text" id="searchBar" placeholder="Search games..." oninput="filterGames()">
+            <span class="settings-icon" onclick="toggleSettings()">⚙️</span>
+        </div>
+    </header>
+
     <!-- All Games Section -->
     <div class="container" id="gameContainer">
-        <!-- Add all games here -->
         <div class="game-card" data-title="Highway Traffic">
             <img src="https://via.placeholder.com/150x100.png?text=Highway+Traffic" alt="Highway Traffic">
             <h3>Highway Traffic</h3>
             <div class="views" id="highwayTrafficViews">Views: 0</div>
             <button onclick="playGame('https://www.onlinegames.io/games/2022/unity/highway-traffic/index.html', 'highwayTrafficViews')">Play Now</button>
         </div>
-        <!-- Repeat similar blocks for other games -->
+        <div class="game-card" data-title="Slow Roads">
+            <img src="https://via.placeholder.com/150x100.png?text=Slow+Roads" alt="Slow Roads">
+            <h3>Slow Roads</h3>
+            <div class="views" id="slowRoadsViews">Views: 0</div>
+            <button onclick="playGame('https://slowroads.io/', 'slowRoadsViews')">Play Now</button>
+        </div>
+        <div class="game-card" data-title="Sans Fight">
+            <img src="https://via.placeholder.com/150x100.png?text=Sans+Fight" alt="Sans Fight">
+            <h3>Sans Fight</h3>
+            <div class="views" id="sansFightViews">Views: 0</div>
+            <button onclick="playGame('https://jcw87.github.io/c2-sans-fight/index.html', 'sansFightViews')">Play Now</button>
+        </div>
     </div>
 
     <script>
-        // Play game and update view counter
         function playGame(gameUrl, viewId) {
             window.open(gameUrl, '_blank');
             const viewElement = document.getElementById(viewId);
@@ -187,7 +196,6 @@
             viewElement.innerText = `Views: ${currentViews}`;
         }
 
-        // Initialize view counters from localStorage
         window.onload = () => {
             document.querySelectorAll('.views').forEach(viewElement => {
                 const viewId = viewElement.id;
@@ -196,7 +204,6 @@
             });
         };
 
-        // Filter games based on search input
         function filterGames() {
             const searchValue = document.getElementById('searchBar').value.toLowerCase();
             const games = document.querySelectorAll('.game-card');
@@ -207,7 +214,6 @@
             });
         }
 
-        // Toggle between light and dark themes
         function toggleSettings() {
             const currentTheme = document.body.getAttribute('data-theme');
             document.body.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
