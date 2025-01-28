@@ -62,13 +62,16 @@
             margin-right: 10px;
         }
 
-        .popular-section {
-            margin: 20px;
+        header .settings-icon {
+            cursor: pointer;
+            font-size: 1.5em;
+            color: var(--header-text);
         }
 
-        .popular-section h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        .section-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 20px;
         }
 
         .container {
@@ -103,6 +106,12 @@
             margin: 10px 0;
         }
 
+        .game-card .views {
+            font-size: 0.9em;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
         .game-card button {
             padding: 10px 15px;
             background-color: var(--button-bg);
@@ -123,72 +132,52 @@
         <h1>Kamil's Game Cave</h1>
         <div class="header-right">
             <input type="text" id="searchBar" placeholder="Search games..." oninput="filterGames()">
+            <span class="settings-icon" onclick="toggleSettings()">⚙️</span>
         </div>
     </header>
 
-    <div class="popular-section">
-        <h2>Popular Games</h2>
-        <div class="container">
-            <div class="game-card" data-title="GTA Simulator">
-                <img src="https://via.placeholder.com/150x100.png?text=GTA+Simulator" alt="GTA Simulator">
-                <h3>GTA Simulator</h3>
-                <button onclick="playGame('https://www.onlinegames.io/games/2023/unity2/gta-simulator/index.html')">Play Now</button>
-            </div>
-            <div class="game-card" data-title="Masked Special Forces">
-                <img src="https://via.placeholder.com/150x100.png?text=Masked+Special+Forces" alt="Masked Special Forces">
-                <h3>Masked Special Forces</h3>
-                <button onclick="playGame('https://www.onlinegames.io/games/2022/unity2/masked-special-forces/index.html')">Play Now</button>
-            </div>
-            <div class="game-card" data-title="Astro Robot Clicker">
-                <img src="https://via.placeholder.com/150x100.png?text=Astro+Robot+Clicker" alt="Astro Robot Clicker">
-                <h3>Astro Robot Clicker</h3>
-                <button onclick="playGame('https://1games.io/game/astro-robot-clicker/')">Play Now</button>
-            </div>
+    <!-- Popular Games Section -->
+    <div class="section-title">🔥 Popular Games</div>
+    <div class="container">
+        <div class="game-card" data-title="GTA Simulator">
+            <h3>GTA Simulator</h3>
+            <button onclick="playGame('https://www.onlinegames.io/games/2023/unity2/gta-simulator/index.html')">Play Now</button>
+        </div>
+        <div class="game-card" data-title="Masked Special Forces">
+            <h3>Masked Special Forces</h3>
+            <button onclick="playGame('https://www.onlinegames.io/games/2022/unity2/masked-special-forces/index.html')">Play Now</button>
+        </div>
+        <div class="game-card" data-title="Astro Robot Clicker">
+            <h3>Astro Robot Clicker</h3>
+            <button onclick="playGame('https://1games.io/game/astro-robot-clicker/')">Play Now</button>
         </div>
     </div>
 
+    <!-- All Games Section -->
+    <div class="section-title">🎮 All Games</div>
     <div class="container" id="gameContainer">
         <div class="game-card" data-title="Highway Traffic">
-            <img src="https://via.placeholder.com/150x100.png?text=Highway+Traffic" alt="Highway Traffic">
             <h3>Highway Traffic</h3>
             <button onclick="playGame('https://www.onlinegames.io/games/2022/unity/highway-traffic/index.html')">Play Now</button>
         </div>
-        <div class="game-card" data-title="Mario">
-            <img src="https://via.placeholder.com/150x100.png?text=Mario" alt="Mario">
-            <h3>Mario</h3>
-            <button onclick="playGame('https://augustberchelmann.com/mario/')">Play Now</button>
-        </div>
-        <div class="game-card" data-title="Pokemon Red">
-            <img src="https://via.placeholder.com/150x100.png?text=Pokemon+Red" alt="Pokemon Red">
-            <h3>Pokemon Red</h3>
-            <button onclick="playGame('https://pokemonredgb.netlify.app/')">Play Now</button>
-        </div>
-        <div class="game-card" data-title="Slow Roads">
-            <img src="https://via.placeholder.com/150x100.png?text=Slow+Roads" alt="Slow Roads">
-            <h3>Slow Roads</h3>
-            <button onclick="playGame('https://slowroads.io/')">Play Now</button>
-        </div>
-        <div class="game-card" data-title="Sans Fight">
-            <img src="https://via.placeholder.com/150x100.png?text=Sans+Fight" alt="Sans Fight">
-            <h3>Sans Fight</h3>
-            <button onclick="playGame('https://jcw87.github.io/c2-sans-fight/index.html')">Play Now</button>
-        </div>
-        <div class="game-card" data-title="NZP">
-            <img src="https://via.placeholder.com/150x100.png?text=NZP" alt="NZP">
-            <h3>NZP</h3>
-            <button onclick="playGame('https://nzp.gay')">Play Now</button>
-        </div>
-</div>
-
-    </div>
-<div class="game-card" data-title="Geometry Dash Lite">
-    <h3>Geometry Dash Lite</h3>
-    <button onclick="playGame('https://geometrydashlite.io/geometry-dash-lite')">Play Now</button>
-</div>
- <div class="game-card" data-title="FNAF Web">
+        <div class="game-card" data-title="FNAF Web">
             <h3>FNAF Web</h3>
             <button onclick="playGame('https://dorukyum.github.io/FNAF-Web/')">Play Now</button>
         </div>
+        <div class="game-card" data-title="Slow Roads">
+            <h3>Slow Roads</h3>
+            <button onclick="playGame('https://slowroads.io/')">Play Now</button>
+        </div>
+        <div class="game-card" data-title="NZP">
+            <h3>NZP</h3>
+            <button onclick="playGame('https://nzp.gay')">Play Now</button>
+        </div>
+        <div class="game-card" data-title="Sans Fight">
+            <h3>Sans Fight</h3>
+            <button onclick="playGame('https://jcw87.github.io/c2-sans-fight/index.html')">Play Now</button>
+        </div>
+    </div>
+
     <script>
         function playGame(gameUrl) {
             window.open(gameUrl, '_blank');
